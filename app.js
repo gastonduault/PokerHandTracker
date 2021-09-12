@@ -40,10 +40,11 @@ window.addEventListener("resize", () => {
 
 
 /*--------------liste carte--*/
-const listCarte = document.querySelector(".listCarte1");
-const cartes = listCarte.querySelectorAll(".cartes");
-const cartesS = listCarte.querySelectorAll(".carteS");
+const cartes = page[0].querySelectorAll(".cartes");
+const cartesS = page[0].querySelectorAll(".carteS");
+const listCarte = page[0].querySelectorAll(".listCarte");
 
+let listeCarteClick = -1;
 
 function cardClear(){
     cartes.forEach((item)=>{
@@ -51,10 +52,14 @@ function cardClear(){
     });
 }
 
+listCarte.forEach((item,index) => {
+    item.addEventListener("mouseenter", () => {listeCarteClick=index;});
+})
+
 
 function choixCarte(index){
-    listCarte.style.height='auto';
-    let carteSelect = listCarte.querySelector(".select");
+    listCarte[listeCarteClick].style.height='auto';
+    let carteSelect = page[0].querySelector(".select");
     if(cartes[index] == carteSelect){
         carteSelect.classList.remove("select");
     }else{
@@ -65,6 +70,7 @@ function choixCarte(index){
 cartesS.forEach((item, index) => {
     item.addEventListener('click', () => choixCarte(index));
 })
+
 
 function heightClose(element,x) {
   // get the height of the element's inner content, regardless of its actual size
@@ -102,35 +108,46 @@ function heightOpen(element) {
     });
 }
 
-document.querySelector(".zoneClickCarte1").addEventListener('click', function(e){
-    listCarte.classList.toggle("open");
+const zoneClicklisteCarte = page[0].querySelectorAll(".zoneClickCarte");
 
-    if(document.querySelector(".open") === listCarte){
-        heightOpen(listCarte);
-    }else{
-        if(document.querySelector(".carteSelect") === listCarte){
-            heightClose(listCarte,50);
-        }else{
-            heightClose(listCarte,30);
-        }
-    }
+zoneClicklisteCarte.forEach((item,index) => {
+    item.addEventListener('click', () => ClickBurgerCarte(item,index));
 });
 
-const imgCarte1 = document.querySelectorAll(".imgCartes1");
+function ClickBurgerCarte(item,index){
+    listCarte[index].classList.toggle("open");
+
+    if(listCarte[index].classList.contains("open")){
+        console.log(1);
+        heightOpen(listCarte[index]);
+    }else{
+        if(listCarte[index].classList.contains("carteSelect")){
+            console.log(2);
+            heightClose(listCarte[index],50);
+        }else{
+            console.log(3);
+            heightClose(listCarte[index],30);
+        }
+    }
+}
+
+const imgCarte1 = page[0].querySelectorAll(".imgCartes1");
 const tabSigne = Array('H','C','D','S');
 const tabCardNumber = Array('2','3','4','5','6','7','8','9','10','J','Q','K','A');
-const burger = document.querySelector('.burgerListeCarte');
+const burger = page[0].querySelector('.burgerListeCarte');
 
 function selectCard(item,index){
+    if(index>51) index-=52;
+    console.log(index);
     var carte = (tabCardNumber[Math.trunc(index/4)])+tabSigne[index%4];
-    var txtCarte1 = document.querySelector('.txtCarte1');
+    var txtCarte = page[0].querySelectorAll('.txtCarte');
     var carteHTML="<img src=\"images/"+carte+".JPG\" height=\"50px\" style=\"border-radius:3px 3px;\">";
-    txtCarte1.innerHTML = carteHTML;
-    if(document.querySelector(".carteSelect")!=listCarte){
-        listCarte.classList.toggle('carteSelect');
+    txtCarte[listeCarteClick].innerHTML = carteHTML;
+    if(!listCarte[listeCarteClick].classList.contains("carteSelect")){
+        listCarte[listeCarteClick].classList.toggle('carteSelect');
     }
-    heightClose(listCarte,50);
-    listCarte.classList.toggle("open");
+    heightClose(listCarte[listeCarteClick],50);
+    listCarte[listeCarteClick].classList.toggle("open");
 }
 
 imgCarte1.forEach((item,index) => {

@@ -152,12 +152,20 @@ main h1{
     padding-left: 13%;
 }
 
-.listCarte1{
+.main{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 40%;
+}
+
+.listCarte{
     font-family: CaviarDream;
     background-color: #1A1A1A;
     border-radius: 7px;
     width: 130px;
-    margin: 0px 0px 0px 5%;
+    margin: 0px 0px 0px 0px;
     transition: color 0.2s ease-in-out;
     cursor: pointer;
     overflow: hidden;
@@ -165,25 +173,25 @@ main h1{
     transition: height 1s ease;
 }
 
-.listCarte1.carteSelect .burgerListeCarte {
+.listCarte.carteSelect .burgerListeCarte {
     transform: translateY(-20px);
 }
 
-.zoneClickCarte1{
+.zoneClickCarte{
     padding: 0px 5px 0px 5px;
 }
 
 
-.listCarte1 p{
+.listCarte p{
     text-align: left;
     margin: 0px 0px;
 }
 
-.listCarte1:hover .zoneClickCarte1 p {
+.listCarte:hover .zoneClickCarte p {
     color: #8a88b9;
 }
 
-.listCarte1 .burgerListeCarte {
+.listCarte .burgerListeCarte {
     position: relative;
     right:  -85%;
     bottom: 10px;
@@ -191,7 +199,7 @@ main h1{
     transition: transform 1.5s ease;
 }
 
-.listCarte1 .burgerListeCarte span {
+.listCarte .burgerListeCarte span {
     width: 16px;
     height: 2px;
     background-color: #ffffff;
@@ -202,36 +210,36 @@ main h1{
     padding: 0px 0px;
 }
 
-.listCarte1:hover span{
+.listCarte:hover span{
     background-color: #8a88b9;
 }
 
-.listCarte1.open .burgerListeCarte span:nth-child(2) {
+.listCarte.open .burgerListeCarte span:nth-child(2) {
     background-color: transparent;
 }
 
-.listCarte1 .burgerListeCarte span:nth-child(1){
+.listCarte .burgerListeCarte span:nth-child(1){
     transform: translateY(-3px);
     transition: transform 0.5s ease-in-out;
 }
 
-.listCarte1 .burgerListeCarte span:nth-child(3) {
+.listCarte .burgerListeCarte span:nth-child(3) {
     transform: translateY(3px);
     transition: transform 0.5s ease-in-out;
 }
 
 
-.listCarte1.open .burgerListeCarte span:nth-child(1) {
+.listCarte.open .burgerListeCarte span:nth-child(1) {
     transform: translateY(4px) rotateZ(45deg);
     transition: .7s;
 }
 
-.listCarte1.open .burgerListeCarte span:nth-child(3) {
+.listCarte.open .burgerListeCarte span:nth-child(3) {
     transform: translateZ(-4px) rotate(-45deg);
     transition: .7s;
 }
 
-.listCarte1 ul{
+.listCarte ul{
     text-align: center;
     list-style: none;
     opacity: 1;
@@ -241,7 +249,7 @@ main h1{
     line-height: 85%;
 }
 
-.listCarte1 ul p{
+.listCarte ul p{
     text-align: center;
     margin: 0px 5px;
     padding: 3px;
@@ -249,8 +257,8 @@ main h1{
 }
 
 
-.listCarte1 .cartes:hover p,
-.listCarte1 .cartes.select p{
+.listCarte .cartes:hover p,
+.listCarte .cartes.select p{
     background-color: rgb(173, 171, 171);
     color: #000;
     border-radius: 10px;
