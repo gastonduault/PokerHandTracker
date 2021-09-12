@@ -156,14 +156,17 @@ main h1{
     font-family: CaviarDream;
     background-color: #1A1A1A;
     border-radius: 7px;
-    width: 110px;
-    height: 30px;
-    padding: 0px 5px 0px 5px;
+    width: 130px;
     margin: 0px 0px 0px 5%;
     transition: color 0.2s ease-in-out;
     cursor: pointer;
-     transition: height 1s ease;
     overflow: hidden;
+    height: auto;
+    transition: height 1s ease;
+}
+
+.zoneClickCarte1{
+    padding: 0px 5px 0px 5px;
 }
 
 
@@ -172,7 +175,7 @@ main h1{
     margin: 0px 0px;
 }
 
-.listCarte1:hover p{
+.listCarte1:hover .zoneClickCarte1 p {
     color: #8a88b9;
 }
 
@@ -198,7 +201,7 @@ main h1{
     background-color: #8a88b9;
 }
 
-.listCarte1.active .burgerListeCarte span:nth-child(2) {
+.listCarte1.open .burgerListeCarte span:nth-child(2) {
     background-color: transparent;
 }
 
@@ -213,33 +216,81 @@ main h1{
 }
 
 
-.listCarte1.active .burgerListeCarte span:nth-child(1) {
+.listCarte1.open .burgerListeCarte span:nth-child(1) {
     transform: translateY(4px) rotateZ(45deg);
     transition: .7s;
 }
 
-.listCarte1.active .burgerListeCarte span:nth-child(3) {
+.listCarte1.open .burgerListeCarte span:nth-child(3) {
     transform: translateZ(-4px) rotate(-45deg);
     transition: .7s;
 }
 
-.listCarte1.active {
-    height: 330px;
-}
-
-.listCarte1.listCarte1 ul{
+.listCarte1 ul{
     text-align: center;
     list-style: none;
     opacity: 1;
     font-size: .9em;
     margin: 10px 0px;
     padding: 0px 0px;
-    line-height: 150%;
+    line-height: 85%;
 }
 
-.listCarte1 li:hover{
-    background-color: #fff;
+.listCarte1 ul p{
+    text-align: center;
+    margin: 0px 5px;
+    padding: 3px;
+    transition: background-color 0.4s ease-in-out;
+}
+
+
+.listCarte1 .cartes:hover p,
+.listCarte1 .cartes.select p{
+    background-color: rgb(173, 171, 171);
     color: #000;
-    transition: background-color 0.2s ease-in-out;
+    border-radius: 10px;
 }
 
+.cartes .signe {
+    overflow: hidden;
+    height: 0px;
+    transition: height 0.3s ease-in-out;
+    padding-top: 5px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.cartes.select .signe{
+    height: 50px;
+}
+
+.cartes img{
+    height: 0px;
+    border-radius: 4px 4px 4px 4px;
+    border: solid 1px #0000;
+} 
+
+.cartes .signe img:nth-child(1){
+    transition: height 0.2s ease-in-out;
+}
+.cartes .signe img:nth-child(2) {
+    transition: height 0.4s ease-in-out;
+}
+.cartes .signe img:nth-child(3) {
+    transition: height 0.6s ease-in-out;
+}
+.cartes .signe img:nth-child(4) {
+    transition: height 0.8s ease-in-out;
+}
+
+.cartes.select .signe img{
+    height: 35px;
+}
+
+.cartes.select .signe img:hover{
+    transition: all 200ms ease-in;
+    transform: scale(1.2);
+    z-index: 2;
+}
