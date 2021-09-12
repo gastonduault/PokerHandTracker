@@ -165,6 +165,10 @@ main h1{
     transition: height 1s ease;
 }
 
+.listCarte1.carteSelect .burgerListeCarte {
+    transform: translateY(-20px);
+}
+
 .zoneClickCarte1{
     padding: 0px 5px 0px 5px;
 }
@@ -184,6 +188,7 @@ main h1{
     right:  -85%;
     bottom: 10px;
     margin: 0px 0px;
+    transition: transform 1.5s ease;
 }
 
 .listCarte1 .burgerListeCarte span {

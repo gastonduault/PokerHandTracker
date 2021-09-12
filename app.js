@@ -39,10 +39,11 @@ window.addEventListener("resize", () => {
 });
 
 
-/*--------------burger liste carte--*/
+/*--------------liste carte--*/
 const listCarte = document.querySelector(".listCarte1");
 const cartes = listCarte.querySelectorAll(".cartes");
 const cartesS = listCarte.querySelectorAll(".carteS");
+
 
 function cardClear(){
     cartes.forEach((item)=>{
@@ -65,7 +66,7 @@ cartesS.forEach((item, index) => {
     item.addEventListener('click', () => choixCarte(index));
 })
 
-function heightClose(element) {
+function heightClose(element,x) {
   // get the height of the element's inner content, regardless of its actual size
   var sectionHeight = element.scrollHeight;
   // temporarily disable all css transitions
@@ -80,23 +81,12 @@ function heightClose(element) {
     // on the next frame (as soon as the previous style change has taken effect),
     // have the element transition to height: 0
     requestAnimationFrame(function() {
-      element.style.height = 30 + 'px';
+      element.style.height = x + 'px';
     });
   });
 }
 
 function heightOpen(element) {
-    /*var sectionHeight = element.scrollHeight;
-
-    var elementTransition = element.style.transition;
-    element.style.transition = '';
-    requestAnimationFrame(function() {
-        element.style.height = 'auto';
-        element.style.transition = elementTransition;
-        requestAnimationFrame(function() {
-            element.style.height = 'auto';
-        });
-  });*/
     var sectionHeight = element.scrollHeight;
 
     // have the element transition to the height of its inner content
@@ -114,10 +104,35 @@ function heightOpen(element) {
 
 document.querySelector(".zoneClickCarte1").addEventListener('click', function(e){
     listCarte.classList.toggle("open");
-    var isOpen = document.querySelector(".open") === listCarte;
-    if(isOpen){
+
+    if(document.querySelector(".open") === listCarte){
         heightOpen(listCarte);
     }else{
-        heightClose(listCarte);
+        if(document.querySelector(".carteSelect") === listCarte){
+            heightClose(listCarte,50);
+        }else{
+            heightClose(listCarte,30);
+        }
     }
 });
+
+const imgCarte1 = document.querySelectorAll(".imgCartes1");
+const tabSigne = Array('H','C','D','S');
+const tabCardNumber = Array('2','3','4','5','6','7','8','9','10','J','Q','K','A');
+const burger = document.querySelector('.burgerListeCarte');
+
+function selectCard(item,index){
+    var carte = (tabCardNumber[Math.trunc(index/4)])+tabSigne[index%4];
+    var txtCarte1 = document.querySelector('.txtCarte1');
+    var carteHTML="<img src=\"images/"+carte+".JPG\" height=\"50px\" style=\"border-radius:3px 3px;\">";
+    txtCarte1.innerHTML = carteHTML;
+    if(document.querySelector(".carteSelect")!=listCarte){
+        listCarte.classList.toggle('carteSelect');
+    }
+    heightClose(listCarte,50);
+    listCarte.classList.toggle("open");
+}
+
+imgCarte1.forEach((item,index) => {
+    item.addEventListener('click', () => selectCard(item,index));
+})
