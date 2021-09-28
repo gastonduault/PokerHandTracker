@@ -1,0 +1,28 @@
+@font-face {
+    font-family: CaviarDream;
+    src: url(../font/CaviarDreams.ttf);
+}
+
+.Hand{
+    color: #FFF;
+    font-family: CaviarDream;
+    position: absolute;
+    top: 30px;
+    left: 200px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 35%;
+    text-align: center;
+    background-color: #363535;
+    padding: 10px 10px;
+    border-radius: 10px 10px;
+}
+
+h3{
+    font-family: CaviarDream;
+    width: 100%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+}
